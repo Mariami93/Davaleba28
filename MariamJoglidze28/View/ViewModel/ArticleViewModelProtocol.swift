@@ -9,7 +9,7 @@ import UIKit
 
 protocol ArticleViewModelProtocol: AnyObject {
     func fetchNewses(completion: @escaping (([NewsViewModel]) -> Void))
-    func proceedToDetails(using newsViewModel: NewsViewModel)
+//    func proceedToDetails(using newsViewModel: NewsViewModel)
     
     init(with apiManager: APIManagerProtocol, navigationController: UINavigationController?)
 }
@@ -30,10 +30,10 @@ final class ArticleViewModel: ArticleViewModelProtocol {
         }
     }
     
-    func proceedToDetails(using newsViewModel: NewsViewModel) {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "NewsDetailsViewController") as! NewsDetailsViewController
-        vc.newsViewModel = newsViewModel
-        self.navigationController?.pushViewController(vc, animated: true)
+//    func proceedToDetails(using newsViewModel: NewsViewModel) {
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "NewsDetailsViewController") as! NewsDetailsViewController
+//        vc.newsViewModel = newsViewModel
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
-}
+

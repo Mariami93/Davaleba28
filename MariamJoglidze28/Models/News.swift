@@ -11,7 +11,7 @@ struct News: Codable {
     let title: String?
     let imageUrl: String?
     let description: String?
-    let date: String?
+    let date: String!
     
     enum CodingKeys: String, CodingKey {
         case title, description

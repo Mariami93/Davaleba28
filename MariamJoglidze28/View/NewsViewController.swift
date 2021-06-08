@@ -28,8 +28,8 @@ class NewsViewController: UIViewController {
     }
 
     private func configureViewModel() {
-        newsManager = NewsManager()
-        viewModel = NewsListViewModel(with: newsManager,
+        apiManager = APIManager()
+        viewModel = ArticleViewModel(with: apiManager,
                                       navigationController: self.navigationController)
         dataSource = NewsDataSource(with: tableView,
                                     viewModel: viewModel)

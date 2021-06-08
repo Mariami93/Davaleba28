@@ -10,10 +10,10 @@ import UIKit
 class NewsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private var tableView: UITableView!
-    private var viewModel: NewsListViewModelProtocol!
+    private var viewModel: ArticleViewModelProtocol!
     private var newsViewModels = [NewsViewModel]()
     
-    init(with tableView: UITableView, viewModel: NewsListViewModelProtocol) {
+    init(with tableView: UITableView, viewModel: ArticleViewModelProtocol) {
         super.init()
         
         self.tableView = tableView
@@ -43,8 +43,11 @@ class NewsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.proceedToDetails(using: newsViewModels[indexPath.row])
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 200
+//    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        viewModel.proceedToDetails(using: newsViewModels[indexPath.row])
+//    }
 }
 
