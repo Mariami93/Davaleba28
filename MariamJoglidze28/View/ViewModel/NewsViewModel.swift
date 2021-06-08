@@ -27,25 +27,37 @@ struct NewsViewModel {
         URL(string: news.imageUrl ?? "")
     }
     
+    func computeNewDate(from fromDate: Date, to toDate: Date) -> Date  {
+         let delta = toDate.timeIntervalSince(fromDate)
+         let today = Date()
+         if delta < 0 {
+             return today
+         } else {
+             return today.addingTimeInterval(delta)
+         }
+    }
+    
     var date: String! {
 
-        news.date ?? ""
-        
-    }
-//        let calendar = NSCalendar.current
-//
-//        let resevedDate = news.date ?? ""
-//        let dateFormatter = DateFormatter()
-//        guard let startDate = dateFormatter.date(from: resevedDate) else { return "0" }
-//        // Replace the hour (time) of both dates with 00:00
-//        let date1 = calendar.startOfDay(for: startDate)
-//        let now = Date()
-//        let date2 = calendar.startOfDay(for: now)
-//
-//        let flags = NSCalendar.Unit.day
-//        let components = calendar.dateComponents([.day], from: date1, to: date2)
-//
-//        return "\(components.day)"
+//        news.date ?? ""
+//        
 //    }
+//
+        let calendar = NSCalendar.current
+        let resevedDate = news.date!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+//
+        let startDate = dateFormatter.date(from: resevedDate)!
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: startDate)
+        let now = Date()
+        let date2 = calendar.startOfDay(for: now)
+
+        let components = calendar.dateComponents([.minute], from: startDate, to: now)
+//
+        return String(components.minute!) + " min ago"
+    }
     
 }
